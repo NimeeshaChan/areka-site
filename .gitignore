@@ -22,3 +22,11 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# content firewall — private KB material must never enter this repo
+*.pdf
+*.docx
+knowledge_base/
+canon/
+source_pdfs/
+recovered/
