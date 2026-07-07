@@ -22,3 +22,10 @@ Running log of deviations from plan, discovered edge cases, and mid-build decisi
   reads it from facts data (renders nothing while null).
 - Competitive scan validated: per-artwork WhatsApp CTA, wall-preview service, and trade page are
   all unclaimed in the Klang Valley market. Price *bands* recommended (0/8 competitors show prices).
+
+### Persona-panel findings (2026-07-07) — build requirements regardless of direction
+- Direction D "Warm Editorial" (C structure × B warmth) recommended and added to shootout; owner decides.
+- "Dark luxury" was ChatGPT's invention, not the owner's brief ("minimalist luxury" was his words).
+- Hard requirements from panel: price bands on artwork cards; "Free · no obligation · 48h" beside
+  every Wall Preview CTA; "For Designers" in top nav; artist name + exhibition CV on homepage;
+  top strip "Open today · Free entry · First floor"; collection launches only with photographed works.
