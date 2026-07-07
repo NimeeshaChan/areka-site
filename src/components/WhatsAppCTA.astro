@@ -26,7 +26,7 @@ const href = msisdn ? `https://wa.me/${msisdn}?text=${encodeURIComponent(prefill
 {variant === 'float' && (
   href
     ? <a class="wa-float" href={href} target="_blank" rel="noopener">WhatsApp</a>
-    : <a class="wa-float wa-float--pending" href="/about">Visit us <span class="sr-only">— WhatsApp number being confirmed, </span>· WhatsApp soon</a>
+    : <a class="wa-float wa-float--pending" href="/about">Visit us · WhatsApp soon<span class="sr-only"> (number being confirmed)</span></a>
 )}
 
 {variant === 'inline' && (

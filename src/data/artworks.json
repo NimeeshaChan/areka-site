@@ -39,7 +39,7 @@
     "status": "available",
     "photo": null,
     "placeholder": 3,
-    "featured": true
+    "featured": false
   },
   {
     "id": "ADA-2026-004",
@@ -109,6 +109,6 @@
     "status": "available",
     "photo": null,
     "placeholder": 3,
-    "featured": false
+    "featured": true
   }
 ]
