@@ -9,7 +9,7 @@
   --ink: #221E19;
   --teak: #8B5E3C;
   --teak-deep: #74492C;
-  --dim: #75695C;
+  --dim: #6E6255; /* 4.96:1 on --wall, 5.55:1 on --bg — WCAG AA */
   --hair: #E6DED1;
   --wall: #F0EAE0;
   --cream: #FBF6EE;
@@ -79,10 +79,11 @@ h1, h2, h3 { text-wrap: balance; }
 .btn:hover { background: var(--teak-deep); }
 .btn:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 .btn--pending {
-  background: var(--wall);
-  color: var(--dim);
+  /* quiet secondary, NOT broken-looking: honest pending without dashed drop-zone vernacular */
+  background: var(--cream);
+  color: var(--ink);
   cursor: default;
-  border: 1px dashed var(--dim);
+  border: 1px solid var(--ink);
 }
 .btn-sub { display: block; font-size: 10.5px; color: var(--dim); margin-top: 7px; letter-spacing: .02em; }
 .textlink {
@@ -110,22 +111,24 @@ h1, h2, h3 { text-wrap: balance; }
 .art-card { display: flex; flex-direction: column; }
 .art-card .art-img { aspect-ratio: 4 / 5; margin-bottom: 10px; position: relative; overflow: hidden; background: var(--wall); }
 .art-card .art-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.art-card h3 { font-size: 13.5px; font-weight: 600; margin: 0 0 3px; }
-.art-card .meta { font-size: 11.5px; color: var(--dim); display: block; }
+.art-card h3 { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: 16px; margin: 0 0 3px; }
+.art-card .meta { font-size: 11px; color: var(--dim); display: block; }
 .art-card .price {
-  font-size: 12px; color: var(--ink); font-weight: 600; margin-top: 4px; display: block;
+  font-size: 13.5px; color: var(--ink); font-weight: 600; margin-top: 5px; display: block;
   font-variant-numeric: tabular-nums;
 }
-.art-card .wa-inline { font-size: 11px; color: var(--teak); font-weight: 600; text-decoration: none; margin-top: 6px; }
+.art-card .wa-inline { font-size: 11px; color: var(--teak); font-weight: 600; text-decoration: none; margin-top: 4px; display: inline-block; padding: 8px 0; }
 .art-card .wa-inline:hover { text-decoration: underline; }
 
 /* painterly placeholder canvases */
-.ph { position: relative; width: 100%; height: 100%; }
+.ph { position: relative; width: 100%; height: 100%; box-shadow: inset 0 0 0 1px rgba(34, 30, 25, .08); }
 .ph::after {
   content: "photography in progress";
-  position: absolute; bottom: 8px; left: 0; right: 0;
-  text-align: center; font-size: 9px; letter-spacing: .12em; text-transform: uppercase;
-  color: rgba(34, 30, 25, .45);
+  position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
+  width: max-content; max-width: calc(100% - 14px); box-sizing: border-box;
+  font-size: 9px; letter-spacing: .08em; text-transform: uppercase; text-align: center;
+  color: var(--ink); background: rgba(250, 247, 241, .78);
+  padding: 3px 8px; border-radius: 2px;
 }
 .ph--1 { background: radial-gradient(110% 85% at 25% 20%, #C98F4E 0%, transparent 55%), radial-gradient(100% 80% at 80% 75%, #4E6E5D 0%, transparent 60%), linear-gradient(150deg, #E8D9BE, #B79B72); }
 .ph--2 { background: radial-gradient(90% 70% at 70% 25%, #B4713F 0%, transparent 55%), radial-gradient(110% 85% at 20% 80%, #6B4E3A 0%, transparent 55%), linear-gradient(190deg, #E2D2B8, #A8865E); }
@@ -135,7 +138,8 @@ h1, h2, h3 { text-wrap: balance; }
 .ph--6 { background: radial-gradient(100% 85% at 40% 15%, #C29A5B 0%, transparent 55%), radial-gradient(85% 70% at 80% 80%, #4A5D52 0%, transparent 60%), linear-gradient(140deg, #EBDFC8, #BA9B71); }
 
 /* ---------- bands ---------- */
-.band { border-top: 1px solid var(--ink); padding: 40px 0; }
+/* interior bands use hairlines; solid ink rules are reserved for header/footer + sect-heads */
+.band { border-top: 1px solid var(--hair); padding: 48px 0; }
 .band--wall { background: var(--wall); border-top: 1px solid var(--hair); }
 .band-grid { display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: center; }
 @media (max-width: 640px) { .band-grid { grid-template-columns: 1fr; } }
@@ -166,7 +170,7 @@ table.tiers .dim { color: var(--dim); }
   font-family: var(--serif); font-size: 20px; color: var(--teak); font-weight: 600;
   min-width: 28px; line-height: 1.3;
 }
-.step-list h4 { font-size: 14px; margin: 0 0 3px; font-weight: 600; }
+.step-list h3, .step-list h4 { font-size: 14px; margin: 0 0 3px; font-weight: 600; font-family: var(--sans); font-style: normal; }
 .step-list p { font-size: 13px; color: var(--dim); margin: 0; max-width: 58ch; }
 
 /* WhatsApp float */
@@ -178,4 +182,13 @@ table.tiers .dim { color: var(--dim); }
   box-shadow: 0 10px 24px -10px rgba(34, 30, 25, .5);
 }
 .wa-float:hover { background: var(--teak); }
-.wa-float--pending { background: var(--wall); color: var(--dim); border: 1px dashed var(--dim); box-shadow: none; cursor: default; }
+/* pending float is a real link (to /about) so a tap always does something; hidden on mobile where it overlaps content */
+.wa-float--pending { background: var(--cream); color: var(--ink); border: 1px solid var(--hair); box-shadow: none; opacity: .85; font-size: 10.5px; padding: 9px 14px; }
+@media (max-width: 720px) { .wa-float--pending { display: none; } }
+
+/* accessibility */
+a:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; border-radius: 1px; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}

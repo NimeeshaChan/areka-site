@@ -1,7 +1,10 @@
 ---
 // Every WhatsApp call-to-action on the site renders through this component.
-// When facts.whatsapp is null the button shows an honest pending state,
-// so the owner can see exactly what confirming the number unblocks.
+// While facts.whatsapp is null, pending states stay honest but always end in a
+// working next step (visit) — never a dead stop.
+//
+// facts.whatsapp format contract: Malaysian local number, digits only, leading 0
+// (e.g. "0139818626"). Normalization below tolerates separators and a 60 prefix.
 import facts from '../data/facts.json';
 
 interface Props {
@@ -12,29 +15,35 @@ interface Props {
 }
 const { label = 'WhatsApp Us', prefill = '', sub, variant = 'button' } = Astro.props;
 
-const href = facts.whatsapp
-  ? `https://wa.me/6${facts.whatsapp}?text=${encodeURIComponent(prefill)}`
-  : null;
+const digits = facts.whatsapp ? String(facts.whatsapp).replace(/\D/g, '') : null;
+const msisdn = digits ? (digits.startsWith('60') ? digits : `6${digits}`) : null;
+if (msisdn && !/^60\d{8,10}$/.test(msisdn)) {
+  throw new Error(`facts.whatsapp must be a Malaysian number like "0139818626" — got "${facts.whatsapp}"`);
+}
+const href = msisdn ? `https://wa.me/${msisdn}?text=${encodeURIComponent(prefill)}` : null;
 ---
 
 {variant === 'float' && (
   href
     ? <a class="wa-float" href={href} target="_blank" rel="noopener">WhatsApp</a>
-    : <span class="wa-float wa-float--pending" title="WhatsApp number being confirmed">WhatsApp · soon</span>
+    : <a class="wa-float wa-float--pending" href="/about">Visit us <span class="sr-only">— WhatsApp number being confirmed, </span>· WhatsApp soon</a>
 )}
 
 {variant === 'inline' && (
   href
     ? <a class="wa-inline" href={href} target="_blank" rel="noopener">{label} →</a>
-    : <span class="wa-inline" style="opacity:.55" title="WhatsApp number being confirmed">{label} · soon</span>
+    : <span class="wa-inline" style="opacity:.6; cursor:default">{label} — WhatsApp soon</span>
 )}
 
 {variant === 'button' && (
   <span class="wa-wrap">
     {href
       ? <a class="btn" href={href} target="_blank" rel="noopener">{label}</a>
-      : <span class="btn btn--pending">{label} — number being confirmed</span>}
+      : <span class="btn btn--pending">{label}</span>}
     {sub && <span class="btn-sub">{sub}</span>}
+    {!href && (
+      <span class="btn-sub">Our WhatsApp opens soon — meanwhile, <a href={facts.address.mapsUrl} target="_blank" rel="noopener" style="color:var(--teak); font-weight:600">visit us in SS2</a></span>
+    )}
   </span>
 )}
 

@@ -49,3 +49,31 @@ Running log of deviations from plan, discovered edge cases, and mid-build decisi
   no code change needed.
 - Verified: build clean; 0 fake-artwork names, 0 private strings in dist; noindex on 10/10
   pages; JSON-LD ArtGallery present; all routes 200 on preview server.
+
+## 2026-07-07 — 5-expert critique pass applied (41 findings)
+- Panel: language editor, art director, UX researcher, brand strategist, tech auditor
+  (parallel agents over screenshots + source + live URL). Full findings in private canon.
+- Unanimous finding fixed: top strip claimed "Open today" while days unconfirmed →
+  now conditional on facts.hoursDays ("days being confirmed" until set).
+- Full human copy rewrite applied (de-AI): removed triads, no-X-no-Y reassurance,
+  glib headlines ("Your art department, on call" → "We handle the artwork on your
+  projects"; "Simpler than you think" → "Buying a painting, step by step"), fabricated
+  artist quote unquoted+rewritten, "cup of tea" owner voice worked into About.
+- Dropped ALL ™ symbols (brand: trying-too-hard tell + unregistered-mark claim risk).
+- Tier pricing TABLE → two prose paragraphs (SaaS-anatomy tell).
+- "Living Spaces" sub-brand de-branded to capability sentence (no invented track record).
+- Pending states redesigned: solid quiet button (not dashed/broken), every pending CTA
+  now ends in a working next step (visit + Maps link); mobile float hidden while pending;
+  desktop float links to /about. Artist-submission blocks got a CTA (was a dead end).
+- 3 whitespace-collapse bugs fixed ("batik byFauziah" etc.); swept for more (0 left).
+- wa.me number normalization + build-time format guard added to WhatsAppCTA.
+- a11y: --dim darkened to #6E6255 (AA), caption chips on scrim, aria-pressed + live
+  region on filters, lang="ms" on BM privacy column, heading order fixed (h4→h3 steps,
+  h2 added on collection), global a:focus-visible, topstrip moved inside <header>.
+- OG: og-card.png (1200×630 typographic, playwright-rendered), og:url/site_name/canonical,
+  site set in astro.config. Mobile nav → single scrollable row. Hero frame enlarged,
+  caption unwrapped. About "Arrive/Discover/Connect" museum-brochure section flattened
+  (also removed unverified 60–90 works figure).
+- Deferred to owner (added to decision sheet): interim contact channel (site currently
+  has NO working contact path — most urgent), tagline proposal ("Art to enliven the
+  spaces we live and work in"), canonical Fauziah name form.

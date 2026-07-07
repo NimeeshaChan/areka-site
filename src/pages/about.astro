@@ -23,19 +23,19 @@ import facts from '../data/facts.json';
         to do: enliven the spaces people live and work in.
       </p>
       <p>
-        We believe artworks are more than decoration. They are emotional companions
-        within a space — shaping atmosphere, inspiring connection, and bringing life
-        into everyday environments. Call it what we do: emotional architecture.
+        We believe artworks are more than decoration. A good painting keeps a room
+        company. It changes how the space feels, and after a few years it becomes
+        part of how you remember the place.
       </p>
       <p>
-        The collection centres on two traditions we love — contemporary Balinese
-        abstraction and Malaysian batik fine art — every piece an original, chosen
-        for how it lives on a wall, not just how it looks in a frame.
+        The collection centres on two traditions we love: contemporary Balinese
+        abstraction and Malaysian batik fine art. Every piece is an original,
+        chosen for how it will sit in a real room.
       </p>
       <p class="muted">
-        We're not a place where you need to know about art. Come up the stairs,
-        take your time, ask anything. If a painting is meant for you, you'll know —
-        and if you'd rather be sure, we'll show it on your own wall first.
+        You don't need to know anything about art to come here. Come up the stairs,
+        have a cup of tea with us, take your time. If a painting is meant for you,
+        you'll know. And if you'd rather be sure, we'll show it on your own wall first.
       </p>
     </div>
     <aside class="visit-card">
@@ -59,32 +59,27 @@ import facts from '../data/facts.json';
 
   <section class="wrap" style="padding-top:50px">
     <div class="sect-head"><h2>The space</h2></div>
-    <div class="space-grid">
-      <div class="space-step">
-        <span class="serif n">I</span>
-        <h3>Arrive</h3>
-        <p>A calm entry gallery under warm light — one statement artwork, room to slow down.</p>
-      </div>
-      <div class="space-step">
-        <span class="serif n">II</span>
-        <h3>Discover</h3>
-        <p>The central feature zone unfolds along the gallery's length — abstraction beside batik, large works beside intimate ones.</p>
-      </div>
-      <div class="space-step">
-        <span class="serif n">III</span>
-        <h3>Connect</h3>
-        <p>The main hall, where sixty to ninety works rotate through the year — and where most people find the one that follows them home.</p>
-      </div>
+    <div class="prose">
+      <p>
+        One long, calm floor above the shops, under warm light. Abstraction hangs
+        beside batik, large canvases beside small ones, and there's room to stand
+        back from all of it. Browse as long as you like — nobody will hover.
+      </p>
     </div>
   </section>
 
   <section class="wrap" style="padding-top:50px">
     <div class="submit hairline-block">
       <p class="kicker" style="margin-bottom:8px">Artists — work with us</p>
-      <p class="lede">
+      <p class="lede" style="margin-bottom:12px">
         The gallery was opened to facilitate artists. If your work belongs on these
         walls, send us a few images — we review every submission personally.
       </p>
+      <WhatsAppCTA
+        variant="inline"
+        label="Send us your work"
+        prefill="Hi Art De Areka, I'm an artist and I'd like to show you my work."
+      />
     </div>
   </section>
 
@@ -98,10 +93,5 @@ import facts from '../data/facts.json';
   .v-line { font-size: 13.5px; margin: 0 0 5px; color: var(--ink); }
   .v-line b { font-weight: 700; }
   .pend { color: var(--dim); font-size: 12px; }
-  .space-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-  @media (max-width: 680px) { .space-grid { grid-template-columns: 1fr; } }
-  .space-step .n { font-size: 26px; color: var(--teak); display: block; margin-bottom: 8px; }
-  .space-step h3 { font-size: 14px; font-weight: 700; margin: 0 0 6px; }
-  .space-step p { font-size: 13px; color: var(--dim); margin: 0; }
   .submit { padding: 26px 0; }
 </style>

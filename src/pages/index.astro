@@ -4,14 +4,16 @@ import WhatsAppCTA from '../components/WhatsAppCTA.astro';
 import ArtworkCard from '../components/ArtworkCard.astro';
 import PreviewBand from '../components/PreviewBand.astro';
 import artworks from '../data/artworks.json';
+import artists from '../data/artists.json';
 import facts from '../data/facts.json';
 
 const featured = artworks.filter((a) => a.featured).slice(0, 3);
+const [susana, gee] = artists;
 ---
 
 <Base
   title="Art De Areka — Contemporary Art Gallery, SS2 Petaling Jaya"
-  description="Curated contemporary art for inspired spaces. Original Balinese abstracts and Malaysian batik, from RM 1,200. Free Wall Preview: see art on your wall before you decide."
+  description="A contemporary art gallery in SS2, Petaling Jaya. Original Balinese abstracts and Malaysian batik, from RM 1,200. Free Wall Preview: see art on your wall before you decide."
 >
   <!-- Hero -->
   <section class="hero">
@@ -20,9 +22,8 @@ const featured = artworks.filter((a) => a.featured).slice(0, 3);
         <p class="kicker">Contemporary Art Gallery · SS2, Petaling Jaya</p>
         <h1 class="display">{facts.tagline}</h1>
         <p class="lede" style="margin:16px 0 26px">
-          Original abstracts by <b><a href="/artists/wayan-gede-susana" class="hero-artist">Wayan Gede Susana</a></b> —
-          exhibited in Singapore, Sweden and Switzerland — and batik by
-          <b><a href="/artists/fauziah-gee-yahaya" class="hero-artist">Fauziah “Gee” Yahaya</a></b>.
+          Original abstracts by <b><a href="/artists/wayan-gede-susana" class="hero-artist">{susana.name}</a></b> —
+          exhibited in Singapore, Sweden and Switzerland — and batik by <b><a href="/artists/fauziah-gee-yahaya" class="hero-artist">{gee.name}</a></b>.
           From RM {facts.priceFloor.toLocaleString()}.
         </p>
         <div class="hero-ctas">
@@ -37,7 +38,7 @@ const featured = artworks.filter((a) => a.featured).slice(0, 3);
       <div class="hero-art">
         <figure class="frame">
           <div class="ph ph--1" role="img" aria-label="Ethereal Form by Wayan Susana — photography in progress"></div>
-          <figcaption>Ethereal Form · Wayan Susana · 110 × 120 cm</figcaption>
+          <figcaption><i>Ethereal Form</i> · Wayan Susana · <span style="white-space:nowrap">110 × 120 cm</span> · photography in progress</figcaption>
         </figure>
       </div>
     </div>
@@ -73,10 +74,10 @@ const featured = artworks.filter((a) => a.featured).slice(0, 3);
     </div>
   </section>
 
-  <!-- Visit -->
+  <!-- Visit (days caveat lives in the top strip + footer — not repeated here) -->
   <section class="wrap visit-row">
     <span><b>Visit</b> · {facts.address.street}, {facts.address.area} · <a class="textlink" href={facts.address.mapsUrl} target="_blank" rel="noopener">Map</a></span>
-    <span><b>Hours</b> · {facts.hoursTime}{facts.hoursDays ? `, ${facts.hoursDays}` : ' (opening days being confirmed)'}</span>
+    <span><b>Hours</b> · {facts.hoursTime}{facts.hoursDays ? `, ${facts.hoursDays}` : ''}</span>
   </section>
 </Base>
 
@@ -88,13 +89,14 @@ const featured = artworks.filter((a) => a.featured).slice(0, 3);
   .hero-artist:hover { color: var(--teak); border-color: var(--teak); }
   .hero-ctas { display: flex; gap: 22px; align-items: flex-start; flex-wrap: wrap; }
   .hero-ctas .textlink { margin-top: 14px; }
-  .hero-art { background: var(--wall); padding: 36px 28px; display: flex; justify-content: center; align-items: center; align-self: stretch; }
+  .hero-art { background: var(--wall); padding: 44px 32px; display: flex; justify-content: center; align-items: center; align-self: stretch; }
   .frame {
-    background: #fffdf9; padding: 12px; margin: 0; width: min(80%, 250px);
+    background: #fffdf9; padding: 14px; margin: 0; width: min(84%, 320px);
     box-shadow: 0 14px 30px -14px rgba(60, 45, 30, 0.4), 0 2px 6px rgba(60, 45, 30, 0.12);
   }
   .frame .ph { aspect-ratio: 4 / 5; }
-  .frame figcaption { font-size: 10px; color: var(--dim); padding-top: 8px; text-align: center; letter-spacing: 0.05em; }
+  .frame :global(.ph::after) { display: none; } /* caption lives in the figcaption here */
+  .frame figcaption { font-size: 10px; color: var(--dim); padding-top: 9px; text-align: center; letter-spacing: 0.05em; text-wrap: balance; }
 
   .artist-strip { padding: 15px 0; }
   .strip-row { display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: baseline; }

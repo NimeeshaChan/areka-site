@@ -20,22 +20,26 @@ const sized = artworks.map((a) => {
 >
   <section class="wrap" style="padding-top:44px">
     <p class="kicker">The Collection</p>
-    <h1 class="display">Original works, honestly priced</h1>
+    <h1 class="display">Original works, prices shown</h1>
     <p class="lede" style="margin:14px 0 0">
-      Every piece is an original — no prints, no reproductions. We publish price
-      ranges because choosing art is easier when you know you're in the right room.
-      Ask us for the exact price of any piece, or better: send us your wall first.
+      Every piece here is an original, not a print or a reproduction. We show a
+      price range with each work so you know early on whether it suits your budget.
+      Ask us for the exact price of any piece — or better, send us your wall first.
+      Full titles and artist attributions are being catalogued alongside photography.
+      New to buying art? <a href="/how-buying-works" class="textlink">Here's how it works</a>.
     </p>
   </section>
 
   <section class="wrap" style="padding-top:30px">
+    <div class="sect-head"><h2>Works</h2></div>
     <div class="filter-row" id="filters">
       <span class="filter-label">Size</span>
-      <button class="fbtn fbtn--on" data-size="all">All</button>
-      <button class="fbtn" data-size="s">Small <span>≤ 80 cm</span></button>
-      <button class="fbtn" data-size="m">Medium <span>80–130 cm</span></button>
-      <button class="fbtn" data-size="l">Large <span>130 cm +</span></button>
+      <button class="fbtn fbtn--on" data-size="all" aria-pressed="true">All</button>
+      <button class="fbtn" data-size="s" aria-pressed="false">Small <span>≤ 80 cm</span></button>
+      <button class="fbtn" data-size="m" aria-pressed="false">Medium <span>80–130 cm</span></button>
+      <button class="fbtn" data-size="l" aria-pressed="false">Large <span>130 cm +</span></button>
     </div>
+    <p class="sr-only" aria-live="polite" id="filter-status"></p>
 
     <div class="art-grid" id="grid" style="margin-top:24px">
       {sized.map((a) => (
@@ -53,8 +57,8 @@ const sized = artworks.map((a) => {
         <h2 class="title-lg">Over 100 original works are in the gallery</h2>
         <p class="lede" style="margin:8px 0 0">
           Our full catalogue is being photographed piece by piece. Until it's all
-          online, the best way to see the collection is the oldest one: come up
-          for a look — or tell us what you're searching for and we'll send options.
+          online, the best way to see the collection is to come up and look — or
+          tell us what you're after and we'll send options.
         </p>
       </div>
       <WhatsAppCTA
@@ -73,8 +77,9 @@ const sized = artworks.map((a) => {
   .fbtn {
     font-family: var(--sans); font-size: 12px; font-weight: 600; color: var(--ink);
     background: none; border: 1px solid var(--hair); border-radius: 99px;
-    padding: 7px 16px; cursor: pointer;
+    padding: 11px 16px; min-height: 44px; cursor: pointer;
   }
+  @media (max-width: 480px) { .art-grid { grid-template-columns: 1fr; } }
   .fbtn span { font-weight: 400; color: var(--dim); font-size: 11px; }
   .fbtn--on { background: var(--ink); color: var(--cream); border-color: var(--ink); }
   .fbtn--on span { color: var(--cream); opacity: 0.7; }
@@ -85,13 +90,21 @@ const sized = artworks.map((a) => {
 <script>
   const buttons = document.querySelectorAll<HTMLButtonElement>('.fbtn');
   const items = document.querySelectorAll<HTMLElement>('.grid-item');
+  const status = document.getElementById('filter-status');
   buttons.forEach((btn) =>
     btn.addEventListener('click', () => {
-      buttons.forEach((b) => b.classList.toggle('fbtn--on', b === btn));
-      const size = btn.dataset.size;
-      items.forEach((it) => {
-        it.hidden = size !== 'all' && it.dataset.size !== size;
+      buttons.forEach((b) => {
+        b.classList.toggle('fbtn--on', b === btn);
+        b.setAttribute('aria-pressed', String(b === btn));
       });
+      const size = btn.dataset.size;
+      let shown = 0;
+      items.forEach((it) => {
+        const hide = size !== 'all' && it.dataset.size !== size;
+        it.hidden = hide;
+        if (!hide) shown++;
+      });
+      if (status) status.textContent = `${shown} work${shown === 1 ? '' : 's'} shown`;
     })
   );
 </script>

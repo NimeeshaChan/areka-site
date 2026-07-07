@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import WhatsAppCTA from '../../components/WhatsAppCTA.astro';
 import artists from '../../data/artists.json';
 ---
 
@@ -10,10 +11,10 @@ import artists from '../../data/artists.json';
 >
   <section class="wrap" style="padding-top:44px">
     <p class="kicker">Artists</p>
-    <h1 class="display">Two traditions, one gallery</h1>
+    <h1 class="display">The artists we represent</h1>
     <p class="lede" style="margin:14px 0 0">
-      Contemporary Balinese abstraction and Malaysian batik fine art — each artist
-      represented with their full exhibition history, because provenance matters.
+      Contemporary Balinese abstraction and Malaysian batik fine art. Each artist's
+      page carries their biography and full exhibition history.
     </p>
   </section>
 
@@ -35,10 +36,15 @@ import artists from '../../data/artists.json';
   <section class="wrap" style="padding-top:56px">
     <div class="submit hairline-block">
       <p class="kicker" style="margin-bottom:8px">Artists — work with us</p>
-      <p class="lede">
-        Art De Areka exists to give artists a wall and an audience. If your work
-        belongs here, we'd like to see it — write to us with a few images.
+      <p class="lede" style="margin-bottom:12px">
+        This gallery was opened to facilitate artists. If your work belongs here,
+        we'd like to see it — write to us with a few images.
       </p>
+      <WhatsAppCTA
+        variant="inline"
+        label="Send us your work"
+        prefill="Hi Art De Areka, I'm an artist and I'd like to show you my work."
+      />
     </div>
   </section>
 </Base>

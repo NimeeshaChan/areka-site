@@ -45,15 +45,22 @@ const jsonLd = {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={facts.name} />
+    <meta property="og:url" content={Astro.url.href} />
+    <meta property="og:image" content={new URL('/og-card.png', Astro.url.origin).href} />
+    <link rel="canonical" href={Astro.url.href} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
   <body>
-    <div class="topstrip">
-      <b>Open today {facts.hoursTime}</b> · Free entry · First floor, Jalan SS 2/67
-    </div>
+    <header>
+      <div class="topstrip">
+        {facts.hoursDays
+          ? <Fragment><b>Open {facts.hoursTime}</b> · {facts.hoursDays} · Free entry · First floor, Jalan SS 2/67</Fragment>
+          : <Fragment><b>Open {facts.hoursTime}</b> · days being confirmed · Free entry · First floor, Jalan SS 2/67</Fragment>}
+      </div>
 
-    <header class="site-nav">
+      <div class="site-nav">
       <div class="wrap navrow">
         <a href="/" class="wordmark serif">ART DE AREKA</a>
         <nav aria-label="Main">
@@ -64,6 +71,7 @@ const jsonLd = {
             >{item.label}</a>
           ))}
         </nav>
+      </div>
       </div>
     </header>
 
@@ -120,9 +128,15 @@ const jsonLd = {
   .navrow { display: flex; justify-content: space-between; align-items: center; padding-top: 16px; padding-bottom: 16px; gap: 14px; flex-wrap: wrap; }
   .wordmark { font-size: 15px; letter-spacing: 0.12em; font-weight: 600; color: var(--ink); text-decoration: none; }
   nav { display: flex; gap: 16px; flex-wrap: wrap; }
+  /* single scrollable row on mobile — no ragged two-line wrap, For Designers stays visible */
+  @media (max-width: 640px) {
+    .navrow { flex-direction: column; align-items: flex-start; gap: 10px; }
+    nav { flex-wrap: nowrap; overflow-x: auto; width: 100%; padding-bottom: 4px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  }
   .navlink {
     font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.09em;
     color: var(--dim); text-decoration: none; font-weight: 500;
+    padding: 8px 2px; white-space: nowrap;
   }
   .navlink:hover { color: var(--ink); }
   .navlink--hot { color: var(--teak); font-weight: 600; }
