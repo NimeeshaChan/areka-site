@@ -1,0 +1,69 @@
+---
+import Base from '../../layouts/Base.astro';
+import WhatsAppCTA from '../../components/WhatsAppCTA.astro';
+import ArtworkCard from '../../components/ArtworkCard.astro';
+import artists from '../../data/artists.json';
+import artworks from '../../data/artworks.json';
+
+export function getStaticPaths() {
+  return artists.map((artist) => ({ params: { slug: artist.slug }, props: { artist } }));
+}
+const { artist } = Astro.props;
+
+// Works attributed to this artist (matches on surname to tolerate spelling variants)
+const surname = artist.name.split(' ').pop() ?? '';
+const works = artworks.filter((a) => a.artist && surname && a.artist.includes(surname));
+---
+
+<Base
+  title={`${artist.name} — Art De Areka`}
+  description={`${artist.name}: ${artist.discipline}. Biography, exhibition history, and available works at Art De Areka, Petaling Jaya.`}
+  active="artists"
+>
+  <section class="wrap" style="padding-top:44px">
+    <p class="kicker">{artist.discipline}</p>
+    <h1 class="display">{artist.name}</h1>
+    {artist.quote && <p class="quote serif">“{artist.quote}”</p>}
+  </section>
+
+  <section class="wrap bio-grid" style="padding-top:30px">
+    <div class="prose">
+      {artist.bio.map((p) => <p>{p}</p>)}
+      <div style="margin-top:22px">
+        <WhatsAppCTA
+          label={`Ask about ${artist.name.split(' ')[0]}'s works`}
+          prefill={`Hi Art De Areka, I'd like to know more about works by ${artist.name}.`}
+        />
+      </div>
+    </div>
+    <aside>
+      <div class="sect-head"><h2>Exhibitions</h2></div>
+      <ul class="exh-list">
+        {artist.exhibitions.map((e) => (
+          <li>
+            <span class="yr">{e.year}</span>
+            <span><span class="venue">{e.venue}</span> <span class="place">· {e.place}</span></span>
+          </li>
+        ))}
+      </ul>
+    </aside>
+  </section>
+
+  {works.length > 0 && (
+    <section class="wrap" style="padding-top:50px">
+      <div class="sect-head">
+        <h2>Available works</h2>
+        <a href="/collection">Full collection →</a>
+      </div>
+      <div class="art-grid">
+        {works.map((a) => <ArtworkCard artwork={a} />)}
+      </div>
+    </section>
+  )}
+</Base>
+
+<style>
+  .quote { font-size: 17px; color: var(--dim); font-style: italic; margin: 14px 0 0; max-width: 52ch; }
+  .bio-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 44px; }
+  @media (max-width: 760px) { .bio-grid { grid-template-columns: 1fr; } }
+</style>

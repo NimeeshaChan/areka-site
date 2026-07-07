@@ -1,0 +1,102 @@
+---
+import Base from '../layouts/Base.astro';
+import WhatsAppCTA from '../components/WhatsAppCTA.astro';
+---
+
+<Base
+  title="For Designers & Trade — Art De Areka"
+  description="Trade program for interior designers, architects and developers: curated artwork proposals, mockups into your renders, staging solutions, project sourcing and installation. Petaling Jaya."
+  active="designers"
+>
+  <section class="wrap" style="padding-top:44px">
+    <p class="kicker">For Designers &amp; Trade</p>
+    <h1 class="display">Your art department, on call</h1>
+    <p class="lede" style="margin:14px 0 26px">
+      You know the wall. We know the work that belongs on it. Art De Areka partners
+      with interior designers, architects and developers to take artwork off your
+      critical path — from first mockup to final hanging.
+    </p>
+    <WhatsAppCTA
+      label="Start a Trade Conversation"
+      prefill="Hi Art De Areka, I'm an interior designer/architect and I'd like to hear about your trade program."
+      sub="We reply within one working day"
+    />
+  </section>
+
+  <section class="wrap" style="padding-top:44px">
+    <div class="sect-head"><h2>What the trade program includes</h2></div>
+    <div class="offer-grid">
+      <div class="offer">
+        <h3>Artwork proposals, free</h3>
+        <p>Send a client's wall photo or your project rendering — we return 2–3 curated
+        options mocked into the actual space, ready to drop into your client presentation.</p>
+      </div>
+      <div class="offer">
+        <h3>Specification support</h3>
+        <p>Exact dimensions, medium and framing details for every piece, so artwork
+        specs slot into your documentation without a phone call.</p>
+      </div>
+      <div class="offer">
+        <h3>Trade commissions</h3>
+        <p>Attractive commission structures for designers who specify our works —
+        ask us for current terms.</p>
+      </div>
+      <div class="offer">
+        <h3>Staging &amp; rental solutions</h3>
+        <p>Artwork loans for show units, staging and photography — talk to us about
+        your project timeline.</p>
+      </div>
+      <div class="offer">
+        <h3>Project-friendly pricing</h3>
+        <p>Batch pricing for multi-piece projects: offices, hospitality, clubhouses,
+        sales galleries and show units.</p>
+      </div>
+      <div class="offer">
+        <h3>Delivery &amp; installation</h3>
+        <p>Coordinated delivery and professional hanging, scheduled around your
+        site's handover dates.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap" style="padding-top:50px">
+    <div class="sect-head"><h2>Who we work with</h2></div>
+    <div class="seg-row">
+      <span class="pill">Interior designers</span>
+      <span class="pill">Architects</span>
+      <span class="pill">Property developers — show units &amp; sales galleries</span>
+      <span class="pill">Offices &amp; boardrooms</span>
+      <span class="pill">Hotels &amp; F&amp;B</span>
+      <span class="pill">Clubhouses &amp; common areas</span>
+    </div>
+    <p class="lede" style="margin:22px 0 0">
+      For developers: we also partner on complete show-unit concepts under
+      <i>Art De Areka Living Spaces</i> — art, interior design and custom carpentry
+      as one coordinated team. Ask us about it.
+    </p>
+  </section>
+
+  <section class="band" style="margin-top:54px">
+    <div class="wrap band-grid">
+      <div>
+        <h2 class="title-lg">Send us your current project</h2>
+        <p class="lede" style="margin:8px 0 0">
+          One wall photo or render is all it takes to see how we work.
+        </p>
+      </div>
+      <WhatsAppCTA
+        label="Send a Project Wall"
+        prefill="Hi Art De Areka, I have a project that needs artwork. Here are the details:"
+      />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .offer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px 30px; }
+  @media (max-width: 820px) { .offer-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .offer-grid { grid-template-columns: 1fr; } }
+  .offer h3 { font-size: 14px; font-weight: 700; margin: 0 0 6px; }
+  .offer p { font-size: 13px; color: var(--dim); margin: 0; }
+  .seg-row { display: flex; flex-wrap: wrap; gap: 8px; }
+</style>

@@ -1,0 +1,24 @@
+---
+// The signature-service band, reused across pages.
+import WhatsAppCTA from './WhatsAppCTA.astro';
+---
+
+<section class="band">
+  <div class="wrap band-grid">
+    <div>
+      <h2 class="title-lg">See it on your wall before you decide</h2>
+      <p class="lede" style="margin:8px 0 0">
+        WhatsApp us a photo of your room. Within <b>48 hours</b> we send back two or
+        three artworks placed in your actual space — <b>free, no obligation</b>.
+      </p>
+    </div>
+    <div>
+      <WhatsAppCTA
+        label="Send a Wall Photo"
+        prefill="Hi Art De Areka, I'd like a free Wall Preview. Here's my wall:"
+        sub="Free · no obligation · 48-hour reply"
+      />
+      <p style="margin:10px 0 0"><a class="textlink" href="/preview">How the Wall Preview works</a></p>
+    </div>
+  </div>
+</section>

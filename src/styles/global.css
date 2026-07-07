@@ -1,1 +1,181 @@
 @import "tailwindcss";
+
+/* ============================================================
+   Art De Areka — Direction D "Warm Editorial" design tokens
+   C's editorial structure × B's warmth. Panel-tested 2026-07.
+   ============================================================ */
+:root {
+  --bg: #FAF7F1;
+  --ink: #221E19;
+  --teak: #8B5E3C;
+  --teak-deep: #74492C;
+  --dim: #75695C;
+  --hair: #E6DED1;
+  --wall: #F0EAE0;
+  --cream: #FBF6EE;
+
+  --serif: "Iowan Old Style", Palatino, "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  --sans: "Avenir Next", Avenir, -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  line-height: 1.6;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+.serif { font-family: var(--serif); }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 22px; }
+
+/* ---------- type scale ---------- */
+h1, h2, h3 { text-wrap: balance; }
+.display {
+  font-family: var(--serif);
+  font-size: clamp(28px, 5vw, 44px);
+  line-height: 1.14;
+  font-weight: 600;
+  margin: 0;
+}
+.title-lg {
+  font-family: var(--serif);
+  font-size: clamp(22px, 3.5vw, 30px);
+  line-height: 1.2;
+  font-weight: 600;
+  margin: 0;
+}
+.kicker {
+  font-size: 11px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--teak);
+  font-weight: 600;
+  margin: 0 0 14px;
+}
+.lede { color: var(--dim); font-size: 15px; max-width: 62ch; }
+.prose { max-width: 65ch; }
+.prose p { margin: 0 0 1em; color: var(--ink); font-size: 15px; }
+.prose p.muted, .muted { color: var(--dim); }
+
+/* ---------- buttons & CTAs ---------- */
+.btn {
+  display: inline-block;
+  background: var(--teak);
+  color: var(--cream);
+  padding: 13px 26px;
+  font-size: 11.5px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-radius: 2px;
+  text-decoration: none;
+  transition: background .15s ease;
+}
+.btn:hover { background: var(--teak-deep); }
+.btn:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.btn--pending {
+  background: var(--wall);
+  color: var(--dim);
+  cursor: default;
+  border: 1px dashed var(--dim);
+}
+.btn-sub { display: block; font-size: 10.5px; color: var(--dim); margin-top: 7px; letter-spacing: .02em; }
+.textlink {
+  font-size: 12px; color: var(--ink); font-weight: 600;
+  border-bottom: 1px solid var(--ink); padding-bottom: 2px; text-decoration: none;
+}
+.textlink:hover { color: var(--teak); border-color: var(--teak); }
+
+/* ---------- section furniture ---------- */
+.sect-head {
+  display: flex; justify-content: space-between; align-items: baseline;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 10px; margin: 0 0 22px;
+}
+.sect-head h2 {
+  font-size: 12px; text-transform: uppercase; letter-spacing: .14em; margin: 0; font-weight: 700;
+}
+.sect-head a { font-size: 11.5px; color: var(--teak); text-decoration: none; font-weight: 600; }
+.hairline-block { border-top: 1px solid var(--hair); border-bottom: 1px solid var(--hair); }
+
+/* ---------- artwork grid & cards ---------- */
+.art-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+@media (max-width: 720px) { .art-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; } }
+
+.art-card { display: flex; flex-direction: column; }
+.art-card .art-img { aspect-ratio: 4 / 5; margin-bottom: 10px; position: relative; overflow: hidden; background: var(--wall); }
+.art-card .art-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.art-card h3 { font-size: 13.5px; font-weight: 600; margin: 0 0 3px; }
+.art-card .meta { font-size: 11.5px; color: var(--dim); display: block; }
+.art-card .price {
+  font-size: 12px; color: var(--ink); font-weight: 600; margin-top: 4px; display: block;
+  font-variant-numeric: tabular-nums;
+}
+.art-card .wa-inline { font-size: 11px; color: var(--teak); font-weight: 600; text-decoration: none; margin-top: 6px; }
+.art-card .wa-inline:hover { text-decoration: underline; }
+
+/* painterly placeholder canvases */
+.ph { position: relative; width: 100%; height: 100%; }
+.ph::after {
+  content: "photography in progress";
+  position: absolute; bottom: 8px; left: 0; right: 0;
+  text-align: center; font-size: 9px; letter-spacing: .12em; text-transform: uppercase;
+  color: rgba(34, 30, 25, .45);
+}
+.ph--1 { background: radial-gradient(110% 85% at 25% 20%, #C98F4E 0%, transparent 55%), radial-gradient(100% 80% at 80% 75%, #4E6E5D 0%, transparent 60%), linear-gradient(150deg, #E8D9BE, #B79B72); }
+.ph--2 { background: radial-gradient(90% 70% at 70% 25%, #B4713F 0%, transparent 55%), radial-gradient(110% 85% at 20% 80%, #6B4E3A 0%, transparent 55%), linear-gradient(190deg, #E2D2B8, #A8865E); }
+.ph--3 { background: radial-gradient(100% 80% at 45% 85%, #8E5B33 0%, transparent 55%), radial-gradient(85% 65% at 80% 15%, #57705F 0%, transparent 60%), linear-gradient(130deg, #E5D8C0, #BE9F76); }
+.ph--4 { background: radial-gradient(95% 75% at 30% 70%, #9C7A45 0%, transparent 55%), radial-gradient(80% 70% at 75% 20%, #5C6E62 0%, transparent 60%), linear-gradient(200deg, #EADDC4, #B2926A); }
+.ph--5 { background: radial-gradient(105% 80% at 65% 80%, #A66A38 0%, transparent 55%), radial-gradient(90% 75% at 20% 25%, #6E5F49 0%, transparent 55%), linear-gradient(160deg, #E6D6BB, #AD8C63); }
+.ph--6 { background: radial-gradient(100% 85% at 40% 15%, #C29A5B 0%, transparent 55%), radial-gradient(85% 70% at 80% 80%, #4A5D52 0%, transparent 60%), linear-gradient(140deg, #EBDFC8, #BA9B71); }
+
+/* ---------- bands ---------- */
+.band { border-top: 1px solid var(--ink); padding: 40px 0; }
+.band--wall { background: var(--wall); border-top: 1px solid var(--hair); }
+.band-grid { display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: center; }
+@media (max-width: 640px) { .band-grid { grid-template-columns: 1fr; } }
+
+/* ---------- tables ---------- */
+.tablewrap { overflow-x: auto; }
+table.tiers { border-collapse: collapse; width: 100%; font-size: 13px; }
+table.tiers th, table.tiers td { border-bottom: 1px solid var(--hair); padding: 12px 14px 12px 0; text-align: left; vertical-align: top; }
+table.tiers th { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--dim); border-bottom: 1px solid var(--ink); }
+table.tiers td:first-child { font-weight: 600; white-space: nowrap; }
+table.tiers .dim { color: var(--dim); }
+
+/* ---------- misc ---------- */
+.pill {
+  display: inline-block; font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase;
+  background: var(--wall); color: var(--dim); padding: 4px 12px; border-radius: 99px;
+}
+.exh-list { list-style: none; padding: 0; margin: 0; }
+.exh-list li { display: flex; gap: 16px; padding: 9px 0; border-bottom: 1px solid var(--hair); font-size: 13.5px; }
+.exh-list .yr { font-variant-numeric: tabular-nums; color: var(--teak); font-weight: 600; min-width: 76px; }
+.exh-list .venue { color: var(--ink); }
+.exh-list .place { color: var(--dim); }
+
+.step-list { counter-reset: step; list-style: none; padding: 0; margin: 0; }
+.step-list li { counter-increment: step; display: flex; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--hair); }
+.step-list li::before {
+  content: counter(step);
+  font-family: var(--serif); font-size: 20px; color: var(--teak); font-weight: 600;
+  min-width: 28px; line-height: 1.3;
+}
+.step-list h4 { font-size: 14px; margin: 0 0 3px; font-weight: 600; }
+.step-list p { font-size: 13px; color: var(--dim); margin: 0; max-width: 58ch; }
+
+/* WhatsApp float */
+.wa-float {
+  position: fixed; right: 18px; bottom: 18px; z-index: 60;
+  background: var(--ink); color: var(--cream);
+  font-size: 11.5px; font-weight: 600; letter-spacing: .06em;
+  padding: 12px 18px; border-radius: 99px; text-decoration: none;
+  box-shadow: 0 10px 24px -10px rgba(34, 30, 25, .5);
+}
+.wa-float:hover { background: var(--teak); }
+.wa-float--pending { background: var(--wall); color: var(--dim); border: 1px dashed var(--dim); box-shadow: none; cursor: default; }

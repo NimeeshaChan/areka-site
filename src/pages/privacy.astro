@@ -1,0 +1,79 @@
+---
+import Base from '../layouts/Base.astro';
+// PDPA 2010 requires the privacy notice in both Bahasa Malaysia and English.
+// DRAFT — for owner/lawyer review before launch (tracked in implementation-notes.md).
+---
+
+<Base
+  title="Privacy Notice / Notis Privasi — Art De Areka"
+  description="How Art De Areka handles your personal data under the Personal Data Protection Act 2010 (PDPA)."
+>
+  <section class="wrap" style="padding-top:44px">
+    <p class="kicker">Privacy Notice · Notis Privasi</p>
+    <h1 class="display">Your data, plainly explained</h1>
+    <p class="lede" style="margin:14px 0 0">
+      This notice is issued under the Personal Data Protection Act 2010 (PDPA) in
+      English and Bahasa Malaysia. <span class="muted">Draft — under review.</span>
+    </p>
+  </section>
+
+  <section class="wrap notice-grid" style="padding-top:34px">
+    <div class="prose">
+      <h2 class="lang-h">English</h2>
+      <h3>What we collect</h3>
+      <p>When you contact us — by WhatsApp, social media, email, or in the gallery —
+      we may collect your name, phone number, and the information you share with us,
+      such as photos of your wall and your artwork preferences.</p>
+      <h3>Why we collect it</h3>
+      <p>To respond to your enquiry, prepare your Wall Preview, arrange viewings,
+      delivery and installation, and — only if you agree — to share occasional news
+      about new works and gallery events.</p>
+      <h3>Who sees it</h3>
+      <p>Only Art De Areka. We do not sell or share your personal data with third
+      parties, except service providers needed to fulfil your request (for example,
+      delivery) or where the law requires.</p>
+      <h3>Your choices</h3>
+      <p>You may ask us at any time to correct your data, stop marketing messages,
+      or delete your information. Just message us — the same channel you used to
+      reach us works.</p>
+      <h3>Security &amp; retention</h3>
+      <p>We keep your data only as long as needed for the purposes above and protect
+      it with reasonable safeguards.</p>
+    </div>
+
+    <div class="prose">
+      <h2 class="lang-h">Bahasa Malaysia</h2>
+      <h3>Apa yang kami kumpul</h3>
+      <p>Apabila anda menghubungi kami — melalui WhatsApp, media sosial, e-mel, atau
+      di galeri — kami mungkin mengumpul nama, nombor telefon, dan maklumat yang anda
+      kongsikan, seperti gambar dinding anda dan citarasa karya seni anda.</p>
+      <h3>Tujuan pengumpulan</h3>
+      <p>Untuk menjawab pertanyaan anda, menyediakan Wall Preview anda, mengatur
+      sesi tontonan, penghantaran dan pemasangan, dan — hanya dengan persetujuan
+      anda — berkongsi berita sekali-sekala tentang karya baharu dan acara galeri.</p>
+      <h3>Siapa yang boleh akses</h3>
+      <p>Hanya Art De Areka. Kami tidak menjual atau berkongsi data peribadi anda
+      dengan pihak ketiga, kecuali pembekal perkhidmatan yang diperlukan untuk
+      memenuhi permintaan anda (contohnya penghantaran) atau jika dikehendaki
+      oleh undang-undang.</p>
+      <h3>Pilihan anda</h3>
+      <p>Anda boleh meminta kami membetulkan data anda, menghentikan mesej pemasaran,
+      atau memadamkan maklumat anda pada bila-bila masa. Hubungi kami melalui saluran
+      yang sama anda gunakan.</p>
+      <h3>Keselamatan &amp; penyimpanan</h3>
+      <p>Kami menyimpan data anda hanya selama yang diperlukan untuk tujuan di atas
+      dan melindunginya dengan langkah keselamatan yang munasabah.</p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .notice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; }
+  @media (max-width: 760px) { .notice-grid { grid-template-columns: 1fr; } }
+  .lang-h {
+    font-size: 12px; text-transform: uppercase; letter-spacing: 0.14em;
+    border-bottom: 1px solid var(--ink); padding-bottom: 8px; margin: 0 0 16px;
+  }
+  .prose h3 { font-size: 13.5px; font-weight: 700; margin: 18px 0 6px; }
+  .prose p { font-size: 13px; color: var(--dim); }
+</style>

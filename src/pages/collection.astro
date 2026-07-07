@@ -1,0 +1,97 @@
+---
+import Base from '../layouts/Base.astro';
+import ArtworkCard from '../components/ArtworkCard.astro';
+import WhatsAppCTA from '../components/WhatsAppCTA.astro';
+import PreviewBand from '../components/PreviewBand.astro';
+import artworks from '../data/artworks.json';
+
+// Size class from the longest side: S ≤ 80cm, M ≤ 130cm, L above.
+const sized = artworks.map((a) => {
+  const longest = Math.max(a.widthCm, a.heightCm);
+  const size = longest <= 80 ? 's' : longest <= 130 ? 'm' : 'l';
+  return { ...a, size };
+});
+---
+
+<Base
+  title="The Collection — Art De Areka"
+  description="Original contemporary paintings from RM 1,200 — Balinese abstraction and Malaysian batik. Browse by size, ask about any piece on WhatsApp."
+  active="collection"
+>
+  <section class="wrap" style="padding-top:44px">
+    <p class="kicker">The Collection</p>
+    <h1 class="display">Original works, honestly priced</h1>
+    <p class="lede" style="margin:14px 0 0">
+      Every piece is an original — no prints, no reproductions. We publish price
+      ranges because choosing art is easier when you know you're in the right room.
+      Ask us for the exact price of any piece, or better: send us your wall first.
+    </p>
+  </section>
+
+  <section class="wrap" style="padding-top:30px">
+    <div class="filter-row" id="filters">
+      <span class="filter-label">Size</span>
+      <button class="fbtn fbtn--on" data-size="all">All</button>
+      <button class="fbtn" data-size="s">Small <span>≤ 80 cm</span></button>
+      <button class="fbtn" data-size="m">Medium <span>80–130 cm</span></button>
+      <button class="fbtn" data-size="l">Large <span>130 cm +</span></button>
+    </div>
+
+    <div class="art-grid" id="grid" style="margin-top:24px">
+      {sized.map((a) => (
+        <div class="grid-item" data-size={a.size}>
+          <ArtworkCard artwork={a} />
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- The 100+ works band -->
+  <section class="band" style="margin-top:50px">
+    <div class="wrap band-grid">
+      <div>
+        <h2 class="title-lg">Over 100 original works are in the gallery</h2>
+        <p class="lede" style="margin:8px 0 0">
+          Our full catalogue is being photographed piece by piece. Until it's all
+          online, the best way to see the collection is the oldest one: come up
+          for a look — or tell us what you're searching for and we'll send options.
+        </p>
+      </div>
+      <WhatsAppCTA
+        label="Tell us what you're looking for"
+        prefill="Hi Art De Areka, I'm looking for artwork for my space. Roughly:"
+      />
+    </div>
+  </section>
+
+  <PreviewBand />
+</Base>
+
+<style>
+  .filter-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .filter-label { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--dim); font-weight: 600; margin-right: 4px; }
+  .fbtn {
+    font-family: var(--sans); font-size: 12px; font-weight: 600; color: var(--ink);
+    background: none; border: 1px solid var(--hair); border-radius: 99px;
+    padding: 7px 16px; cursor: pointer;
+  }
+  .fbtn span { font-weight: 400; color: var(--dim); font-size: 11px; }
+  .fbtn--on { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+  .fbtn--on span { color: var(--cream); opacity: 0.7; }
+  .fbtn:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+  .grid-item[hidden] { display: none; }
+</style>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.fbtn');
+  const items = document.querySelectorAll<HTMLElement>('.grid-item');
+  buttons.forEach((btn) =>
+    btn.addEventListener('click', () => {
+      buttons.forEach((b) => b.classList.toggle('fbtn--on', b === btn));
+      const size = btn.dataset.size;
+      items.forEach((it) => {
+        it.hidden = size !== 'all' && it.dataset.size !== size;
+      });
+    })
+  );
+</script>

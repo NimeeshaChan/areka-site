@@ -29,3 +29,23 @@ Running log of deviations from plan, discovered edge cases, and mid-build decisi
 - Hard requirements from panel: price bands on artwork cards; "Free · no obligation · 48h" beside
   every Wall Preview CTA; "For Designers" in top nav; artist name + exhibition CV on homepage;
   top strip "Open today · Free entry · First floor"; collection launches only with photographed works.
+
+## 2026-07-07 — D-prototype build (10 pages)
+- Built pages: / /collection /artists /artists/[slug] /preview /designers /about
+  /how-buying-works /privacy. Data-driven from src/data/{facts,artworks,artists}.json.
+- DEVIATION from plan: plain JSON data modules instead of Astro content collections —
+  simpler, typed enough at this scale, zero API risk. Revisit if catalog grows past ~50 works.
+- Fonts: system stacks (Iowan Old Style/Palatino serif; Avenir/system sans) — no webfont,
+  Android falls back to Georgia. Revisit at launch if brand needs exact faces.
+- facts.launch=false → every page carries noindex; flip to true only when launch gates pass:
+  (1) ≥1 real artwork photo, (2) WhatsApp number confirmed, (3) hours confirmed,
+  (4) artist image licenses signed.
+- Placeholder tiles use real stock-table dimensions & price bands (rows 2,4,5,6,8,9,13);
+  titles kept "Untitled" — NO invented titles/artists. Ethereal Form is the only named work.
+- Wall Preview premium tiers show "Ask us" — no prices exist in KB; owner to set.
+- Designer commissions: qualitative only ("ask us for current terms") — no % exists in KB.
+- Privacy notice: EN + BM drafted, marked as draft pending owner/lawyer review.
+- Analytics: enable Cloudflare Web Analytics via dashboard toggle (Pages project → Metrics) —
+  no code change needed.
+- Verified: build clean; 0 fake-artwork names, 0 private strings in dist; noindex on 10/10
+  pages; JSON-LD ArtGallery present; all routes 200 on preview server.

@@ -1,0 +1,55 @@
+---
+import Base from '../../layouts/Base.astro';
+import artists from '../../data/artists.json';
+---
+
+<Base
+  title="Artists — Art De Areka"
+  description="The artists of Art De Areka: Wayan Gede Susana (contemporary Balinese abstraction, exhibited in Singapore, Sweden and Switzerland) and Fauziah “Gee” Yahaya (Malaysian batik fine art)."
+  active="artists"
+>
+  <section class="wrap" style="padding-top:44px">
+    <p class="kicker">Artists</p>
+    <h1 class="display">Two traditions, one gallery</h1>
+    <p class="lede" style="margin:14px 0 0">
+      Contemporary Balinese abstraction and Malaysian batik fine art — each artist
+      represented with their full exhibition history, because provenance matters.
+    </p>
+  </section>
+
+  <section class="wrap" style="padding-top:36px">
+    <div class="artist-cards">
+      {artists.map((artist, i) => (
+        <a href={`/artists/${artist.slug}`} class="artist-card">
+          <div class="art-img">
+            <div class={`ph ph--${i + 1}`} role="img" aria-label={`Work by ${artist.name} — photography in progress`}></div>
+          </div>
+          <h2 class="serif">{artist.name}</h2>
+          <span class="disc">{artist.discipline}</span>
+          <span class="more">Bio &amp; exhibitions →</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="wrap" style="padding-top:56px">
+    <div class="submit hairline-block">
+      <p class="kicker" style="margin-bottom:8px">Artists — work with us</p>
+      <p class="lede">
+        Art De Areka exists to give artists a wall and an audience. If your work
+        belongs here, we'd like to see it — write to us with a few images.
+      </p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .artist-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+  @media (max-width: 680px) { .artist-cards { grid-template-columns: 1fr; } }
+  .artist-card { text-decoration: none; color: var(--ink); }
+  .artist-card .art-img { aspect-ratio: 5 / 4; margin-bottom: 14px; overflow: hidden; background: var(--wall); }
+  .artist-card h2 { font-size: 22px; font-weight: 600; margin: 0 0 4px; }
+  .artist-card .disc { font-size: 12px; color: var(--dim); display: block; }
+  .artist-card .more { font-size: 11.5px; color: var(--teak); font-weight: 600; margin-top: 8px; display: inline-block; }
+  .submit { padding: 26px 0; }
+</style>

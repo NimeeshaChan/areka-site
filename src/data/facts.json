@@ -1,0 +1,21 @@
+{
+  "_comment": "Public subset of the canonical facts file. null = pending owner confirmation; components render honest pending states. Flip launch:true only when launch gates pass (see implementation-notes.md).",
+  "launch": false,
+  "name": "Art De Areka",
+  "tagline": "Curated contemporary art for inspired spaces",
+  "priceFloor": 1200,
+  "address": {
+    "street": "29-1, First Floor, Jalan SS 2/67",
+    "area": "SS2, Petaling Jaya",
+    "full": "29-1, First Floor, Jalan SS 2/67, 47300 Petaling Jaya, Selangor, Malaysia",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=29-1%2C+Jalan+SS+2%2F67%2C+47300+Petaling+Jaya%2C+Selangor"
+  },
+  "whatsapp": null,
+  "hoursTime": "11am – 5pm",
+  "hoursDays": null,
+  "email": null,
+  "instagram": null,
+  "ssmNumber": null,
+  "establishedYear": null,
+  "previewTurnaround": "48 hours"
+}

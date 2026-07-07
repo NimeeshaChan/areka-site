@@ -1,0 +1,43 @@
+[
+  {
+    "slug": "wayan-gede-susana",
+    "name": "Wayan Gede Susana",
+    "discipline": "Contemporary Balinese abstraction",
+    "quote": "Exploring silence, atmosphere, and spatial emotion through layered abstraction.",
+    "bio": [
+      "Wayan Gede Susana was born in 1967 in Mas Village, Ubud — a community whose name has been synonymous with Balinese fine art for generations. He began painting in childhood and entered formal artistic training at fifteen, later studying architecture at Udayana University, a discipline whose sense of space and structure still shapes his canvases.",
+      "His work sits within contemporary abstract expressionism, layering colour and texture into compositions that feel less like pictures and more like atmospheres. Over three decades his paintings have travelled from the galleries of Ubud to solo exhibitions in Singapore, Sweden and Switzerland.",
+      "At Art De Areka, Susana is our featured artist — the anchor of the collection."
+    ],
+    "exhibitions": [
+      { "year": "2017", "venue": "The Art of Wayan Gede Susana — ArtSafe", "place": "Singapore" },
+      { "year": "2015", "venue": "Infinite Beauty — Maya Gallery", "place": "Singapore" },
+      { "year": "—", "venue": "Solo exhibition, Västervik", "place": "Sweden" },
+      { "year": "1997", "venue": "Obridi Gallery", "place": "Switzerland" },
+      { "year": "1996", "venue": "Club Med", "place": "Bali" },
+      { "year": "1995", "venue": "Sadra Art Gallery, Ubud", "place": "Bali" },
+      { "year": "1994", "venue": "Cahaya Dewata", "place": "Bali" },
+      { "year": "1993", "venue": "Melia Bali Sol", "place": "Bali" },
+      { "year": "1992", "venue": "Club Med", "place": "Bali" },
+      { "year": "1991", "venue": "Putri Bali", "place": "Bali" },
+      { "year": "1990", "venue": "Melia Bali Sol", "place": "Bali" },
+      { "year": "1989", "venue": "Club Med", "place": "Bali" }
+    ]
+  },
+  {
+    "slug": "fauziah-gee-yahaya",
+    "name": "Fauziah “Gee” Hj. Yahaya",
+    "discipline": "Malaysian batik fine art",
+    "quote": null,
+    "bio": [
+      "Fauziah Hj. Yahaya — known in the art world simply as Gee — has spent more than thirty years turning batik, Malaysia's most beloved textile tradition, into contemporary fine art. Born in 1965, she works in batik on canvas and paper as well as mixed media, carrying the wax-and-dye discipline of the craft into gallery painting.",
+      "Her signature subjects are drawn from the world around her: Heliconia and Malaysian tropical flora, cats, elephants — and the Petronas Twin Towers, rendered in the flowing line that only batik allows.",
+      "A certified art educator since 1993, Gee formerly practised at Galeri Rafflesia in Kompleks Kraf on Jalan Conlay, Kuala Lumpur, and has demonstrated live batik painting to international audiences."
+    ],
+    "exhibitions": [
+      { "year": "2015", "venue": "Exhibition — Kita-Kita Gallery, Damansara", "place": "Malaysia" },
+      { "year": "2012", "venue": "Live batik demonstration — KLIA", "place": "Malaysia" },
+      { "year": "1993", "venue": "Certified Duncan Teacher, Duncan Educational Service", "place": "Malaysia" }
+    ]
+  }
+]

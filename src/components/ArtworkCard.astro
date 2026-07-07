@@ -1,0 +1,37 @@
+---
+import WhatsAppCTA from './WhatsAppCTA.astro';
+
+interface Props {
+  artwork: {
+    id: string;
+    title: string;
+    artist: string | null;
+    medium: string;
+    widthCm: number;
+    heightCm: number;
+    priceDisplay: string;
+    status: string;
+    photo: string | null;
+    placeholder: number;
+  };
+}
+const { artwork: a } = Astro.props;
+const dims = `${a.widthCm} × ${a.heightCm} cm`;
+const byline = a.artist ? `${a.artist} · ${a.medium}` : a.medium;
+---
+
+<article class="art-card">
+  <div class="art-img">
+    {a.photo
+      ? <img src={a.photo} alt={`${a.title}${a.artist ? ` by ${a.artist}` : ''}, ${dims}`} loading="lazy" />
+      : <div class={`ph ph--${a.placeholder}`} role="img" aria-label={`${a.title}, ${dims} — photography in progress`}></div>}
+  </div>
+  <h3>{a.title}</h3>
+  <span class="meta">{byline} · {dims}</span>
+  <span class="price">{a.priceDisplay}</span>
+  <WhatsAppCTA
+    variant="inline"
+    label="Ask about this piece"
+    prefill={`Hi Art De Areka, I'm interested in ${a.title} (${a.id}, ${dims}).`}
+  />
+</article>

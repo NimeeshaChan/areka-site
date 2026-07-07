@@ -1,0 +1,88 @@
+---
+import Base from '../layouts/Base.astro';
+import WhatsAppCTA from '../components/WhatsAppCTA.astro';
+---
+
+<Base
+  title="How Buying Works — Art De Areka"
+  description="Buying original art, made simple: ask about a piece on WhatsApp, see it on your wall or in the gallery, and we deliver and hang it for you. No pressure at any step."
+>
+  <section class="wrap" style="padding-top:44px">
+    <p class="kicker">How Buying Works</p>
+    <h1 class="display">Simpler than you think</h1>
+    <p class="lede" style="margin:14px 0 0">
+      Most people who buy from us have never bought original art before. Here's the
+      whole process — no jargon, no pressure, and you can stop at any step.
+    </p>
+  </section>
+
+  <section class="wrap" style="padding-top:36px">
+    <ol class="step-list">
+      <li>
+        <div>
+          <h4>Ask about a piece — or about your wall</h4>
+          <p>WhatsApp us about any artwork in the collection, or start with a free
+          <a href="/preview" class="textlink">Wall Preview</a> and let the right piece find you.
+          Every listed work shows its size and price range up front.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h4>See it properly</h4>
+          <p>Visit the gallery to stand in front of it — entry is free — or let us
+          mock it up on a photo of your own wall first. For most pieces we can hold
+          it briefly while you decide.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h4>Confirm the price</h4>
+          <p>We publish honest price ranges and confirm the exact price when you ask.
+          No games — the price is the price, and it includes our advice on framing
+          and placement.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <h4>Delivered and hung</h4>
+          <p>We coordinate delivery and hang the work properly — right height, right
+          fixings, level. Your job is to stand back and look.</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="wrap" style="padding-top:40px">
+    <div class="qa hairline-block">
+      <p class="kicker" style="margin-bottom:10px">Common questions</p>
+      <dl>
+        <dt>Do I need to know about art?</dt>
+        <dd>No. Tell us about your room and what you like — that's all the expertise required.</dd>
+        <dt>Are the works originals?</dt>
+        <dd>Yes — every piece in the collection is an original work, not a print or reproduction.</dd>
+        <dt>Payment and delivery details?</dt>
+        <dd>Ask us on WhatsApp and we'll confirm the current options for your purchase and area.</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section class="band" style="margin-top:50px">
+    <div class="wrap band-grid">
+      <div>
+        <h2 class="title-lg">Step one costs nothing</h2>
+        <p class="lede" style="margin:8px 0 0">Send a message. That's the whole first step.</p>
+      </div>
+      <WhatsAppCTA
+        label="Start on WhatsApp"
+        prefill="Hi Art De Areka, I'd like to ask about buying a piece."
+      />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .qa { padding: 26px 0; }
+  dl { margin: 0; max-width: 62ch; }
+  dt { font-size: 13.5px; font-weight: 700; margin-top: 14px; }
+  dd { font-size: 13px; color: var(--dim); margin: 4px 0 0; }
+</style>

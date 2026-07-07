@@ -1,0 +1,43 @@
+---
+// Every WhatsApp call-to-action on the site renders through this component.
+// When facts.whatsapp is null the button shows an honest pending state,
+// so the owner can see exactly what confirming the number unblocks.
+import facts from '../data/facts.json';
+
+interface Props {
+  label?: string;
+  prefill?: string;
+  sub?: string; // e.g. "Free · no obligation · 48-hour reply"
+  variant?: 'button' | 'inline' | 'float';
+}
+const { label = 'WhatsApp Us', prefill = '', sub, variant = 'button' } = Astro.props;
+
+const href = facts.whatsapp
+  ? `https://wa.me/6${facts.whatsapp}?text=${encodeURIComponent(prefill)}`
+  : null;
+---
+
+{variant === 'float' && (
+  href
+    ? <a class="wa-float" href={href} target="_blank" rel="noopener">WhatsApp</a>
+    : <span class="wa-float wa-float--pending" title="WhatsApp number being confirmed">WhatsApp · soon</span>
+)}
+
+{variant === 'inline' && (
+  href
+    ? <a class="wa-inline" href={href} target="_blank" rel="noopener">{label} →</a>
+    : <span class="wa-inline" style="opacity:.55" title="WhatsApp number being confirmed">{label} · soon</span>
+)}
+
+{variant === 'button' && (
+  <span class="wa-wrap">
+    {href
+      ? <a class="btn" href={href} target="_blank" rel="noopener">{label}</a>
+      : <span class="btn btn--pending">{label} — number being confirmed</span>}
+    {sub && <span class="btn-sub">{sub}</span>}
+  </span>
+)}
+
+<style>
+  .wa-wrap { display: inline-block; }
+</style>
